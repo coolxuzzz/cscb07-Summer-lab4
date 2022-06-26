@@ -3,14 +3,30 @@ package lab4;
 /**
  * RationalNumber is the class inheriting the SpecialNumber class, which
  * allows an application to represent rational number supporting add(),
- * divideByInt(), and computeAverage() functions in work. In addition, the
- * class itself also supports sorting by natural ordering.
+ * divideByInt(), and computeAverage() functions in work. In addition,
+ * the class itself also supports sorting by natural ordering.
  *
+ * @author xuzheng
+ * @version 1.0
  */
 public class RationalNumber extends SpecialNumber implements Comparable<RationalNumber>{
+    /**
+     * Represent numerator part.
+     */
     int numerator;
+
+    /**
+     * Represent denominator part.
+     */
     int denominator;
 
+    /**
+     * Create a rational number with given numerator and denominator.
+     * @param numerator         Numerator part of the rational number.
+     * @param denominator       Denominator part of the rational number.
+     * @throws Lab4Exception    Show error messages "Denominator cannot be
+     *                          zero" denominator is zero.
+     */
     public RationalNumber (int numerator, int denominator) throws Lab4Exception {
         if (denominator == 0)
             throw new Lab4Exception("Denominator cannot be zero");
@@ -19,6 +35,14 @@ public class RationalNumber extends SpecialNumber implements Comparable<Rational
         this.denominator = denominator;
     }
 
+    /**
+     * Add calling rational number object with the special number OBJ.
+     * @param obj               A special number object.
+     * @return                  A resulting rational number object.
+     * @throws Lab4Exception    The error message "Cannot add an incompatible
+     *                          type" is shown if OBJ is not a rational number
+     *                          object.
+     */
     @Override
     public SpecialNumber add(SpecialNumber obj) throws Lab4Exception {
         if (!(obj instanceof RationalNumber))
@@ -39,6 +63,13 @@ public class RationalNumber extends SpecialNumber implements Comparable<Rational
         return res;
     }
 
+    /**
+     * Divide  the  calling rational number object  by  the NUM.
+     * @param num Divisor.
+     * @return                  The resulting rational number object.
+     * @throws Lab4Exception    Show error messages "Cannot divide by zero"
+     *                          if NUM is zero.
+     */
     @Override
     public SpecialNumber divideByInt(int num) throws Lab4Exception {
         if (num == 0)
@@ -47,6 +78,13 @@ public class RationalNumber extends SpecialNumber implements Comparable<Rational
         return new RationalNumber(this.numerator, this.denominator * num);
     }
 
+    /**
+     * Compare rational number O with the calling object.
+     * @param o A rational number object.
+     * @return  A negative integer, zero, or a positive integer as this
+     *          object is less, equal to, or greater than the specified
+     *          object.
+     */
     @Override
     public int compareTo(RationalNumber o) {
         int x = this.numerator * o.denominator;
@@ -59,6 +97,10 @@ public class RationalNumber extends SpecialNumber implements Comparable<Rational
             return 0;
     }
 
+    /**
+     * Get hashcode of the calling object.
+     * @return Hashcode.
+     */
     @Override
     public int hashCode() {
         int x = numerator;
@@ -73,6 +115,11 @@ public class RationalNumber extends SpecialNumber implements Comparable<Rational
         }
     }
 
+    /**
+     * If the calling object is equal to OBJ.
+     * @param obj   Object.
+     * @return      True if they are equal. False otherwise.
+     */
     @Override
     public boolean equals(Object obj) {
         if (obj instanceof RationalNumber) {

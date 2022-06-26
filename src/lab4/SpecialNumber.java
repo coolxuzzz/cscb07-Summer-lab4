@@ -8,12 +8,11 @@ public abstract class SpecialNumber {
 
     /**
      * Compute the average of elements of List.
-     * Lab4Exception raises when the List is null or empty.
-     *
-     * @param nums              the list of SpecialNumber Objects
-     * @return                  the SpecialNumber Object with average value
+     * @param nums              The list of SpecialNumber Objects
+     * @return                  The SpecialNumber Object with average value
      *                          of the list of objects
-     * @throws Lab4Exception    Exceptions raises when the list is null or empty
+     * @throws Lab4Exception    Show error message "List cannot be empty" if
+     *                          NUMS is null or empty.
      */
     static public SpecialNumber computeAverage(List<SpecialNumber> nums) throws Lab4Exception {
         if (nums == null || nums.isEmpty())
